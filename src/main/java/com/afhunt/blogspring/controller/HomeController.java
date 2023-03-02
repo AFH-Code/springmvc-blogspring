@@ -8,22 +8,19 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-
-    List<Video> videos = List.of(
-    new Video("Need HELP with your SPRING BOOT 3 App?"),
-    new Video("Don't do THIS to your own CODE!"),
-    new Video("SECRETS to fix BROKEN CODE!")
+    List<News> news = List.of(
+    new News("Need HELP with your SPRING BOOT 3 App?"),
+    new News("Don't do THIS to your own CODE!"),
+    new News("SECRETS to fix BROKEN CODE!")
     );
-
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("videos", videos);
+        model.addAttribute("news", news);
         return "index";
     }
-
-    private class Video {
+    private class News {
         public String s;
-        public Video(String s) {
+        public News(String s) {
             this.s = s;
         }
     }
