@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Une page</title>
+</head>
+<body>
+
+<h1>Greetings Learning Spring Boot 3.0 fans!</h1>
+<p>
+  In this chapter, we are learning how to make
+  a web app using Spring Boot 3.0
+</p>
+
+<div th:each="video : ${videos}">
+    <div><span th:text="${video.s}"> Title </span></div>
+</div>
+
+</body>
+</html>
+
+
