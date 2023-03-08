@@ -17,6 +17,11 @@
     <div><span th:text="${news.s}"> Title </span></div>
 </div>
 
+<form action="/new-news" method="post">
+    <input type="text" name="s">
+    <button type="submit">Submit</button>
+</form>
+
 </body>
 </html>
 

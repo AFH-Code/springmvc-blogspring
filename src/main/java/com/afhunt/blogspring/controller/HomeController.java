@@ -1,11 +1,12 @@
 package com.afhunt.blogspring.controller;
 
+import com.afhunt.blogspring.entity.News;
 import com.afhunt.blogspring.service.NewsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
@@ -18,5 +19,11 @@ public class HomeController {
     public String index(Model model){
         model.addAttribute("news", newsService.getNews());
         return "index";
+    }
+
+    @PostMapping("/new-news")
+    public String newVideo(@ModelAttribute News newNews) {
+        newsService.create(newNews);
+        return "redirect:/";
     }
 }

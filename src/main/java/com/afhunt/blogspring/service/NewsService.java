@@ -3,6 +3,7 @@ package com.afhunt.blogspring.service;
 import org.springframework.stereotype.Service;
 import com.afhunt.blogspring.entity.News;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,5 +15,12 @@ public class NewsService {
 
     public List<News> getNews() {
         return news;
+    }
+
+    public News create(News newNews) {
+        List<News> extend = new ArrayList<>(news);
+        extend.add(newNews);
+        this.news = List.copyOf(extend);
+        return newNews;
     }
 }
