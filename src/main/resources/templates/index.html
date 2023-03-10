@@ -14,11 +14,15 @@
 </p>
 
 <div th:each="news : ${news}">
-    <div><span th:text="${news.s}"> Title </span></div>
+    <div style="background: #f4f4f4; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 5px; padding: 7px;">
+        <div><strong th:text="${news.name}"> Title </strong></div>
+        <div><span th:text="${news.description}"> Description </span></div>
+    </div>
 </div>
 
 <form action="/new-news" method="post">
-    <input type="text" name="s">
+    <input type="text" name="name" placeholder="name">
+    <input type="text" name="description" placeholder="description">
     <button type="submit">Submit</button>
 </form>
 
