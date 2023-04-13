@@ -3,7 +3,12 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Une page</title>
+    <title>Une page</title>
+    <style>
+        .card-article{
+            background: #f4f4f4; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 5px; padding: 7px;
+        }
+    </style>
 </head>
 <body>
 
@@ -14,9 +19,10 @@
 </p>
 
 <div th:each="news : ${news}">
-    <div style="background: #f4f4f4; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 5px; padding: 7px;">
+    <div class="card-article">
         <div><strong th:text="${news.name}"> Title </strong></div>
         <div><span th:text="${news.description}"> Description </span></div>
+        <div><span th:text="${#strings.toUpperCase(news.category.name)}"> Description </span></div>
     </div>
 </div>
 

@@ -26,13 +26,13 @@ public class HomeController {
     }
 
     @PostMapping("/new-news")
-    public String newVideo(@ModelAttribute NewsSubmit newNews) {
+    public String newVideo(@ModelAttribute NewsSubmit newNews){
         newsService.create(newNews);
         return "redirect:/";
     }
 
     @PostMapping("/multi-field-search")
-    public String multiFieldSearch(@ModelAttribute NewsSubmit search, Model model) {
+    public String multiFieldSearch(@ModelAttribute NewsSubmit search, Model model){
         List<NewsEntity> searchResults = newsService.search(search);
         model.addAttribute("news", searchResults);
         return "index";
