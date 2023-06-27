@@ -3,6 +3,7 @@ package com.afhunt.blogspring.controller;
 import com.afhunt.blogspring.entity.News;
 import com.afhunt.blogspring.entity.NewsEntity;
 import com.afhunt.blogspring.pojo.NewsSubmit;
+import com.afhunt.blogspring.service.CategoryService;
 import com.afhunt.blogspring.service.NewsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,19 +16,25 @@ import java.util.List;
 @Controller
 public class HomeController {
     private NewsService newsService;
-    public HomeController(NewsService newsService){
+    private CategoryService categoryService;
+
+    public HomeController(NewsService newsService, CategoryService categoryService){
         this.newsService = newsService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/")
     public String index(Model model){
         model.addAttribute("news", newsService.getNews());
+        model.addAttribute("categories", categoryService.getCategories());
+
         return "index";
     }
 
     @PostMapping("/new-news")
     public String newVideo(@ModelAttribute NewsSubmit newNews){
         newsService.create(newNews);
+
         return "redirect:/";
     }
 

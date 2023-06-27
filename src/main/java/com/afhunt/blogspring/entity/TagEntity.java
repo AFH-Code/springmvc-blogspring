@@ -20,7 +20,7 @@ public class TagEntity {
     @Column(name="description", nullable=false, length=512)
     public String description;
 
-    @ManyToMany(mappedBy="tags")
+    @ManyToMany(mappedBy="tags", fetch = FetchType.EAGER)
     private Set<NewsEntity> news = new HashSet<NewsEntity>();
 
     protected TagEntity() {

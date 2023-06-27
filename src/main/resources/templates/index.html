@@ -18,17 +18,34 @@
   a web app using Spring Boot 3.0
 </p>
 
-<div th:each="news : ${news}">
+<div th:each="news, index : ${news}" th:if="${index.count < 10 }" >
+    <div th:text="${index.count}">index</div>
     <div class="card-article">
-        <div><strong th:text="${news.name}"> Title </strong></div>
+        <div><span th:text="${news.id}"> Title </span> <strong th:text="${news.name}"> Title </strong></div>
         <div><span th:text="${news.description}"> Description </span></div>
         <div><span th:text="${#strings.toUpperCase(news.category.name)}"> Description </span></div>
+
+        <div th:if="${news.tags.empty}">
+            <strong colspan="2"> No Books Available </strong>
+        </div>
+
+        <ul>
+            <li th:each="tag : ${news.tags}">
+                <span th:text="${tag.id}"></span>. <strong th:text="${tag.name}"> Title </strong>
+            </li>
+        </ul>
     </div>
 </div>
 
 <form action="/new-news" method="post">
     <input type="text" name="name" placeholder="name">
     <input type="text" name="description" placeholder="description">
+
+    <select class="form-control" id="dropDownList" name="category">
+        <option value="0">select option</option>
+        <option th:each="option : ${categories}" th:value="${option.id}" th:text="${option.name}"></option>
+    </select>
+
     <button type="submit">Submit</button>
 </form>
 
