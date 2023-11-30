@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 @EnableScheduling
 public class BlogSpringApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BlogSpringApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(BlogSpringApplication.class, args);
+    }
 
 }
